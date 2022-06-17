@@ -1,0 +1,50 @@
+ข้อ 2 - Database Design
+
+เลือก database design ที่คุณเคยเลือกใช้ พร้อมคำอธิบายที่เกี่ยวข้อง และอธิบายปัญหาที่เคยเกิดขึ้น พร้อมวิธีการแก้ไขปัญหา
+
+- Preplanning
+- Understanding the purpose of data
+- Normalization
+- Prevent redundant records
+- Indexing
+- Domain values and table management
+- Consistent naming conventions
+- Documentation
+- Usage testing
+
+- Preplanning
+ปัญหา: เกิดการแก้ไขข้อมูลใน Database บ่อยครั้งเนื่องจากวางแผนไม่ดี
+วิธีแก้: คุยกับ SA เรื่องการออกแบบ Database เช่น table A มี relation กับ tabel ไหนไหม, มี column อะไรบ้าง
+
+- Understanding the purpose of data
+ปัญหา: ใช้ data ผิดจุดประสงค์
+วิธีแก้: ทำความเข้าใจกับคนออกแบบ Database ว่า data ในส่วนนี้ใช้ในจุดประสงค์อะไร
+
+- Normalization
+ปัญหา: เปลืองพื้นที่ใน Database
+วิธีแก้: สร้าง table และทำ relationship เช่น แทนที่จะเก็บ status: "hide" ให้เก็บเป็น status: 0 แทน
+และสร้าง table Status => status_code: 0, status_name: "hide"
+
+- Prevent redundant records
+ปัญหา: ข้อมูลซ้ำกัน
+วิธีแก้: เช็ค column ที่ unique ว่ามี record อยู่ใน Database หรือไม่
+
+- Indexing
+ปัญหา: runtime เยอะถ้าข้อมูลมีเยอะ
+วิธีแก้: ทำ index กับ column ที่ต้องการ
+
+- Domain values and table management
+ปัญหา: data ใน column ไม่อยู่ใน scope ที่ต้องการ
+วิธีแก้: สร้าง domain value เช่น CREATE DOMAIN SHIPPOP AS REAL CHECK(value >= 0 AND value <= 10);
+
+- Consistent naming conventions
+ปัญหา: ในชื่อ table มีตัวพิมพ์ใหญ่ แต่ไฟล์ .js อ่านชื่อ table, column, database ใน SQL statement เป็นตัวพิมพ์เล็ก
+วิธีแก้: ตั้งชื่อเป็นตัวอักษรพิมพ์เล็ก
+
+- Documentation
+ปัญหา: ไม่เข้าใจโครงสร้าง Database ที่ developer คนอื่นเคยทำไว้
+วิธีแก้: อ่าน, เขียน Documentation ของ Database
+
+- Usage testing
+ปัญหา: จำนวน ip ที่เข้าถึง database มีเยอะเกินไป
+วิธีแก้: test database ก่อนที่จะ deploy
